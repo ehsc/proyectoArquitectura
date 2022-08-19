@@ -1,0 +1,31 @@
+
+html, body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    margin-top: 35px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(17, 17, 27);
+    
+}
+canvas{
+    display: block;
+}
+
+.boton{
+    width: 125px;
+    height: 50px;
+    color: rgb(205, 214, 244);
+    background-color: rgb(30, 30, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.boton:hover{
+    cursor: pointer;
+}

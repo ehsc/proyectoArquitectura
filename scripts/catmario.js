@@ -1,4 +1,4 @@
-class Catmario{
+class Personaje{
 
     constructor(){
         
@@ -33,7 +33,7 @@ class Catmario{
     }
 
     show(){
-        image(cImg, this.x, this.y, this.r, this.r);
+        image(spritespersonaje[frameCount % 15], this.x, this.y, this.r, this.r);
         
     }
 }

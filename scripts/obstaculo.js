@@ -11,7 +11,8 @@ class Obstaculo{
     }
 
     show(){
-        image(oImg, this.x, this.y, this.r, this.r);
+        //image(oImg, this.x, this.y, this.r, this.r);
+        image(spritesobstaculo[frameCount % 24], this.x, this.y, this.r, this.r);
         
     }
 }

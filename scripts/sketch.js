@@ -1,36 +1,45 @@
-let catmario;
-let cImg;
+let personaje;
 let bImg;
-let oImg;
 let obstaculos = [];
 let soundClassifier;
+let spritespersonaje = [];
+let spritesobstaculo = [];
+let audio_hit = new Audio("/sounds/hit.ogg")
+
 
 function preload(){
     const options = {probabilityThreshold:0.9};//pocentaje de que tan cercano esta al sonido
     soundClassifier = ml5.soundClassifier('SpeechCommands18w', options);//modulo preentrenado con sonidos up, down
-    cImg = loadImage('catmario.png');
-    bImg = loadImage('background.png');
-    oImg = loadImage('obstaculo.png');
+    bImg = loadImage('/images/Background.png');
+    for(let i =1; i <= 24; i++){
+        spritesobstaculo.push(loadImage('/images/obstaculo/o'+i+'.png'));
+    }
+    for(let i =1; i <= 15; i++){
+        spritespersonaje.push(loadImage('/images/personaje/p'+i+'.png'));
+    }
+    
 
 }
 function setup(){
-    createCanvas(600, 450);
-    catmario = new Catmario();
+    createCanvas(800, 450);
+    personaje = new Personaje();
     soundClassifier.classify(gotCommand)
+    frameRate(20);
 }
 
 function gotCommand(error, results){
     if(error){
         console.error(error);
     }
+    console.log(results[0].label, results[0].confidence);
     if(results[0].label == 'up'){
-        catmario.jump();
+        personaje.jump();
     }
 }
-
-/*function keyPressed(){
+/*
+function keyPressed(){
     if(key == ' '){
-        catmario.jump();
+        personaje.jump();
     }
 }*/
 function draw(){
@@ -44,14 +53,15 @@ function draw(){
     for(let o of obstaculos){
         o.move();
         o.show();
-        if(catmario.hits(o)){
+        if(personaje.hits(o)){
             console.log("game over");
+            audio_hit.play();
             noLoop();
         }
     }
 
-    catmario.show();
-    catmario.move();
+    personaje.show();
+    personaje.move();
 
     
 }
