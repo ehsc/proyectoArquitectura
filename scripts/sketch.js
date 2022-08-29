@@ -4,18 +4,18 @@ let obstaculos = [];
 let soundClassifier;
 let spritespersonaje = [];
 let spritesobstaculo = [];
-let audio_hit = new Audio("/sounds/hit.ogg")
+let audio_hit = new Audio("./sounds/hit.ogg")
 
 
 function preload(){
     const options = {probabilityThreshold:0.9};//pocentaje de que tan cercano esta al sonido
     soundClassifier = ml5.soundClassifier('SpeechCommands18w', options);//modulo preentrenado con sonidos up, down
-    bImg = loadImage('/images/Background.png');
+    bImg = loadImage('./images/Background.png');
     for(let i =1; i <= 24; i++){
-        spritesobstaculo.push(loadImage('/images/obstaculo/o'+i+'.png'));
+        spritesobstaculo.push(loadImage('./images/obstaculo/o'+i+'.png'));
     }
     for(let i =1; i <= 15; i++){
-        spritespersonaje.push(loadImage('/images/personaje/p'+i+'.png'));
+        spritespersonaje.push(loadImage('./images/personaje/p'+i+'.png'));
     }
     
 
